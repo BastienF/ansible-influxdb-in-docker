@@ -1,0 +1,14 @@
+---
+
+- meta: flush_handlers
+
+- name: Start or restart influxdb container
+  become: true
+  docker_container:
+    name: "{{ influxdb_container_name }}"
+    image: influxdb
+    state: "{{ influxdb_docker_state | default('started') }}"
+    restart: "{{ influxdb_docker_restart | default(false) | bool }}"
+    volumes:
+      - "{{ influxdb_conf_location }}/influxdb.conf:/etc/influxdb/influxdb.conf:ro"
+      - "{{ influxdb_data_location }}:/var/lib/influxdb"

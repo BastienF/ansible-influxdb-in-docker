@@ -1,0 +1,20 @@
+---
+
+- name: create influxDB local directories
+  become: true
+  file:
+    path: "{{ item }}"
+    state: directory
+    recurse: true
+  with_items:
+    - "{{ influxdb_conf_location }}"
+    - "{{ influxdb_data_location }}"
+
+- name: "Create configuration"
+  become: true
+  notify: restart influxdb
+  template:
+    src: "influxdb.conf.j2"
+    dest: "{{ influxdb_conf_location }}/influxdb.conf"
+
+- include_tasks: run_container.yml
