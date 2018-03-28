@@ -1,6 +1,6 @@
 ---
 
-influxdb_container_name: influxdb
+influxdb_container_name: "influxdb"
 
 influxdb_root_location: "/opt/docker-data/{{ influxdb_container_name }}"
 influxdb_conf_location: "{{ influxdb_root_location }}/conf"
