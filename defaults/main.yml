@@ -5,3 +5,8 @@ influxdb_container_name: "influxdb"
 influxdb_root_location: "/opt/docker-data/{{ influxdb_container_name }}"
 influxdb_conf_location: "{{ influxdb_root_location }}/conf"
 influxdb_data_location: "{{ influxdb_root_location }}/data"
+
+influxdb_docker_networks: []
+#influxdb_docker_networks:
+#  - name: "docker_network"
+

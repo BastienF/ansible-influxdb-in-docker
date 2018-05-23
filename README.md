@@ -35,6 +35,13 @@ influxdb_conf_location: "{{ influxdb_root_location }}/conf"
 influxdb_data_location: "{{ influxdb_root_location }}/data"
 ```
 
+#### Docker networks
+```yaml
+influxdb_docker_networks: []
+#influxdb_docker_networks:
+#  - name: "docker_network"
+```
+
 Dependencies
 ------------
 

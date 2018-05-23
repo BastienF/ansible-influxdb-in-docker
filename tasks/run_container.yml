@@ -2,6 +2,12 @@
 
 - meta: flush_handlers
 
+- name: Create a network
+  become: true
+  docker_network:
+    name: "{{ item.name }}"
+  with_items: "{{ influxdb_docker_networks }}"
+
 - name: Start or restart influxdb container
   become: true
   docker_container:
@@ -9,6 +15,7 @@
     image: influxdb
     state: "{{ influxdb_docker_state | default('started') }}"
     restart: "{{ influxdb_docker_restart | default(false) | bool }}"
+    networks: "{{ influxdb_docker_networks }}"
     volumes:
       - "{{ influxdb_conf_location }}/influxdb.conf:/etc/influxdb/influxdb.conf:ro"
       - "{{ influxdb_data_location }}:/var/lib/influxdb"
