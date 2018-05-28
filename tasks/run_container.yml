@@ -16,6 +16,7 @@
     state: "{{ influxdb_docker_state | default('started') }}"
     restart: "{{ influxdb_docker_restart | default(false) | bool }}"
     networks: "{{ influxdb_docker_networks }}"
+    restart_policy: "{{ influxdb_container_restart_policy }}"
     volumes:
       - "{{ influxdb_conf_location }}/influxdb.conf:/etc/influxdb/influxdb.conf:ro"
       - "{{ influxdb_data_location }}:/var/lib/influxdb"

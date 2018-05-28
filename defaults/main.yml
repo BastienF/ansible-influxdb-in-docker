@@ -10,3 +10,4 @@ influxdb_docker_networks: []
 #influxdb_docker_networks:
 #  - name: "docker_network"
 
+influxdb_container_restart_policy: "always"
