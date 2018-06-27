@@ -56,7 +56,8 @@ Example Playbook
 ----------------
 
 See tests/test.yml  
-`ansible-playbook tests/test.yml --ask-sudo-password -e influxdb_root_location="$(pwd)/.workdir/"`
+  * `ansible-playbook tests/test.yml --ask-sudo-password -e influxdb_root_location="$(pwd)/.workdir/"`
+  * On MacsOS due to Docker Machine root limitation : add `-e ansible_become_user="$(whoami)"`
 ```yaml
 - hosts: localhost
   roles:
